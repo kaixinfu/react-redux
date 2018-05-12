@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import Sidebar from './Sidebar';
 import PropTypes from 'prop-types'
+import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import 'antd-mobile/dist/antd-mobile.css';
+import * as actions from './_action'
 
 class Demo extends Component {
-    static childContextTypes = {
-        user: PropTypes.string
+    static contextTypes = {
+        store: PropTypes.object
     }
 
     constructor(props) {
@@ -18,13 +21,13 @@ class Demo extends Component {
 
     render() {
         const user = '开心';
-        console.log('render ======> deme')
+        console.log('render ======> deme', actions)
         return (
             <div>
-                <p>
-                    {`我是${user}的demo`}
-                </p>
-                <Sidebar user={user}/>
+                {/*<Sidebar user={user}/>*/}
+                <WhiteSpace />
+                <Button type="primary" onPress={() => actions.addNum()} inline style={{ marginRight: '4px' }}>➕</Button>
+                <Button type="primary" onPress={actions.reduceNum} inline style={{ marginRight: '4px' }}>➖</Button>
             </div>
         );
     }

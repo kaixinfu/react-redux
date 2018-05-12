@@ -6,9 +6,6 @@ class Sidebar extends Component {
         console.log('render ======> Sidebar')
         return (
             <div>
-                <p>
-                    {`我是侧边栏`}
-                </p>
                 <Navbar />
             </div>
         );
