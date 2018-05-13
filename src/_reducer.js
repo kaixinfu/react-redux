@@ -15,14 +15,15 @@ export default function (state = initialState, action) {
                 ...state
             }
         case types.ADD:
+            console.log('state.num',state.num)
             return {
                 ...state,
-                num: state.num++
+                num: state.num+1
             }
         case types.REDUCE:
             return {
                 ...state,
-                num: state.num--
+                num: state.num-1
             }
         default:
             return state

@@ -4,17 +4,23 @@ function add() {
         type: 'ADD'
     }
 }
-export const addNum = (dispatch) => {
-    dispatch(add)
+// export const addNum = (dispatch) => {
+//     return dispatch(add)
+// }
+
+export function addNum() {
+    return {
+        type: 'ADD'
+    }
 }
 
 function reduce() {
-    console.log('......0')
     return {
         type: 'REDUCE'
     }
 }
-export const reduceNum = (dispatch) => {
-    console.log('......1')
-    dispatch(reduce)
+export const reduceNum = () => {
+    return {
+        type: 'REDUCE'
+    }
 }

@@ -29,7 +29,7 @@ export const connect = (mapStateToProps = state => state, mapDispatchToProps = {
             const {store} = this.context;
             const state = mapStateToProps(store.getState());
             const dispatchProps = bindActionCreators(mapDispatchToProps, store.dispatch)
-            console.log('dispatchProps', dispatchProps)
+            console.log('state =====> ', state)
             this.setState({
                 props: {
                     ...this.state.props,

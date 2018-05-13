@@ -26,16 +26,11 @@ export function createStore(reducer) {
 
 //将dispatch绑定到每一个action
 const bindActionCreator = (creator, dispatch) => {
-    console.log('creator', creator, [...{a:1}])
     return (...args) => dispatch(creator(...args))
 }
 //creators 需要传入的action方法
 export const bindActionCreators = (creators, dispatch) => {
     const bindCreators = {};
-    console.log(typeof creators)
-    console.log('creators', creators)
-    console.log('dispatch', dispatch)
-    console.log(Object.keys(creators))
     Object.keys(creators).forEach(creator => {
         let _creator = creators[creator]
         bindCreators[creator] = bindActionCreator(_creator, dispatch)

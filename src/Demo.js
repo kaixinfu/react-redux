@@ -6,7 +6,6 @@ import {Button, WhiteSpace, WingBlank} from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
 import {addNum, reduceNum} from './_action'
 import {connect} from './_react-redux'
-// import {bindActionCreators} from './_redux'
 
 @connect(
     state => state,
@@ -27,7 +26,6 @@ class Demo extends Component {
     }
 
     render() {
-        console.log('render ======> deme', this.props);
         if (_.isEmpty(this.props)) return null
         return (
             <div>
