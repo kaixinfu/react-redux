@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import Sidebar from './Sidebar';
 import PropTypes from 'prop-types'
+import _ from 'lodash';
 import {Button, WhiteSpace, WingBlank} from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
 import {addNum, reduceNum} from './_action'
 import {connect} from './_react-redux'
-import {bindActionCreators} from './_redux'
-import _ from 'lodash'
+// import {bindActionCreators} from './_redux'
 
 @connect(
     state => state,
