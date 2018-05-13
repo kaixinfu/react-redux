@@ -29,7 +29,7 @@ export const connect = (mapStateToProps = state => state, mapDispatchToProps = {
             const {store} = this.context;
             const state = mapStateToProps(store.getState());
             const dispatchProps = bindActionCreators(mapDispatchToProps, store.dispatch)
-            console.log('state =====> ', state)
+            console.log('_update =====> ', store)
             this.setState({
                 props: {
                     ...this.state.props,
@@ -52,6 +52,7 @@ class Provider extends Component {
     }
 
     constructor(props, context) {
+        console.log('props ==========> ',props)
         super(props, context);
         this.store = props.store
     }
@@ -61,7 +62,6 @@ class Provider extends Component {
     }
 
     render() {
-        console.log('render ======> Provider', this.store)
         return this.props.children
     }
 }

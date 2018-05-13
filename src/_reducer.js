@@ -25,6 +25,11 @@ export default function (state = initialState, action) {
                 ...state,
                 num: state.num-1
             }
+        case types.AWITADD:
+            return {
+                ...state,
+                num: state.num+2
+            }
         default:
             return state
     }

@@ -4,6 +4,7 @@ function add() {
         type: 'ADD'
     }
 }
+
 // export const addNum = (dispatch) => {
 //     return dispatch(add)
 // }
@@ -19,8 +20,17 @@ function reduce() {
         type: 'REDUCE'
     }
 }
+
 export const reduceNum = () => {
     return {
         type: 'REDUCE'
+    }
+}
+
+export function waitAddNum() {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch({type:'AWITADD'})
+        },2000)
     }
 }

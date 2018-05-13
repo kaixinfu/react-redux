@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import _ from 'lodash';
 import {Button, WhiteSpace, WingBlank} from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
-import {addNum, reduceNum} from './_action'
+import {addNum, reduceNum, waitAddNum} from './_action'
 import {connect} from './_react-redux'
 
 @connect(
     state => state,
-    {addNum, reduceNum}
+    {addNum, reduceNum, waitAddNum}
 )
 class Demo extends Component {
     static contextTypes = {
@@ -32,9 +32,12 @@ class Demo extends Component {
                 <Sidebar num={this.props.reducer.num}/>
                 <WhiteSpace/>
                 <Button type="primary" onClick={() => this.props.addNum()} inline
-                        style={{marginRight: '4px'}}>➕</Button>
+                        style={{marginRight: '4px'}}>立即加一</Button>
                 <Button type="primary" onClick={() => this.props.reduceNum()} inline
-                        style={{marginRight: '4px'}}>➖</Button>
+                        style={{marginRight: '4px'}}>立即减一</Button>
+                <WhiteSpace/>
+                <Button type="primary" onClick={() => this.props.waitAddNum()} inline
+                        style={{marginRight: '4px'}}>延时加二</Button>
             </div>
         );
     }
