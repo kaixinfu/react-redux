@@ -11,7 +11,7 @@ class Navbar extends Component {
         return (
             <div>
                 <p>
-                    {`我是的导航栏`}
+                    {`我是导航栏`}
                 </p>
             </div>
         );

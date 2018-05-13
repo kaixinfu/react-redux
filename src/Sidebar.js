@@ -6,6 +6,7 @@ class Sidebar extends Component {
         console.log('render ======> Sidebar')
         return (
             <div>
+                <div>{`${this.props.num}`}</div>
                 <Navbar />
             </div>
         );
