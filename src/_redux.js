@@ -32,7 +32,6 @@ export function createStore(reducer, enhancer) {
 //将dispatch绑定到每一个action
 const bindActionCreator = (creator, dispatch) => {
     return (...args) => {
-        console.log('creator', ...args)
         return dispatch(creator(dispatch))
     }
 }
@@ -43,7 +42,6 @@ export const bindActionCreators = (creators, dispatch) => {
     //     let _creator = creators[creator]
     //     bindCreators[creator] = bindActionCreator(_creator, dispatch)
     // })
-    // console.log('bindCreators',bindCreators)
     // return bindCreators
     return Object.keys(creators).reduce((_creator, creator) => {
         _creator[creator] = bindActionCreator(creators[creator], dispatch);
@@ -51,7 +49,7 @@ export const bindActionCreators = (creators, dispatch) => {
     }, {})
 }
 
-export const applyMiddleware = (middleWare) => {
+export const applyMiddleware = (...middleWares) => {
     return createStore => (...args) => {
         const store = createStore(...args);
         let dispatch = store.dispatch;
@@ -59,14 +57,22 @@ export const applyMiddleware = (middleWare) => {
             getState: store.getState,
             dispatch: (...args) => dispatch(...args)
         }
-        dispatch = middleWare(middleWareApi)(store.dispatch)
-        console.log('.............',{
-            ...store,
-            dispatch
-        })
+        const middleWaresChain = middleWares.map(middleWare => middleWare(middleWareApi))
+        dispatch = compose(...middleWaresChain)(store.dispatch)
+        // dispatch = middleWare(middleWareApi)(store.dispatch)
         return {
             ...store,
             dispatch
         }
     }
+}
+
+const compose = (...funcs) => {
+    if (funcs.length == 0) {
+        return arg => arg
+    }
+    if (funcs.length == 1) {
+        return funcs[0]
+    }
+    return funcs.reduce((result, item) => (...args) => result(item(...args)))
 }

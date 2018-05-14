@@ -30,7 +30,11 @@ export const reduceNum = () => {
 export function waitAddNum() {
     return dispatch => {
         setTimeout(() => {
-            dispatch({type:'AWITADD'})
-        },2000)
+            dispatch({type: 'AWITADD'})
+        }, 2000)
     }
+}
+
+export function waitAddDoubleNum() {
+    return [{type: 'ADD'}, {type: 'ADD'},waitAddNum()]
 }
